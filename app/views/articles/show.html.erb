@@ -1,0 +1,14 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">Display of the article with id <%= @article.id %></div>
+
+  <div class="panel-body">
+    <%= link_to "Edit this article", edit_article_path(@article) %><br/>
+    <br/>
+    <p>
+      Title: <%= @article.title %>
+    </p>
+    <p>
+      Content: <%= @article.content %>
+    </p>
+
+    <%= link_to "Go back to the list of articles", articles_path %>

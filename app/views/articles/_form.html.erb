@@ -1,0 +1,33 @@
+
+
+
+<% if @article.errors.any? %>
+<h2>
+<% if @article.errors.count > 1 %>
+The following errors occured during the article creation
+<% else %>
+The following error occured during the article creation
+<% end %>
+</h2>
+
+<ul>
+  <% @article.errors.full_messages.each do |msg| %>
+  <li><%= msg %></li>
+  <% end %>
+</ul>
+<% end %>
+
+<%= form_for @article do |a| %>
+  <p>
+    <%= a.label :title %><br/>
+    <%= a.text_field :title %>
+  </p>
+  <p>
+    <%= a.label :content %><br/>
+    <%= a.text_area :content %>
+  </p>
+  <p>
+    <%= a.submit %>
+  </p>
+
+<% end %>
