@@ -29,6 +29,8 @@ What's not here must be on the wiki ;)
 ## Production on heroku [Finance Cloud](https://finance-cloud.herokuapp.com):
     $ # To do in the local git repo
     $ git push heroku master
+    $ heroku run rake db:migrate # migrate if needed
+    $ heroku run rake db:seed # seed database if needed
 
 ## Production on school nginx server [Finance Cloud](http://finance.srvz-webapp.he-arc.ch):
     $ # To do at the root of the server
@@ -36,3 +38,5 @@ What's not here must be on the wiki ;)
     $ sudo rsync -a --progress Finance_Cloud/ www/
     $ cd www
     $ bundle install
+    $ rake db:migrate # migrate if needed
+    $ rake db:seed # seed database if needed
