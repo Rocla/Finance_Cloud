@@ -17,15 +17,21 @@ What's not here must be on the wiki ;)
 - 'bcrypt', '~> 3.1.7'
 - 'puma'
 
-## Useful commands
-    $ docker-compose up -d
-    $ docker exec -it ror_web_1 /bin/bash
+## Development setup (locally)
+    $ docker-compose up -d    # starts the VMs
+    $ docker exec -it ror_web_1 /bin/bash   # go to the web VM
     $ su ruby
     $ cd /usr/src/app
     $ cd FinanceCloud
-    $ rails s -b 0.0.0.0
+    $ bundle install --without production # to do after gemfile modifications
+    $ rails s -b 0.0.0.0  # run the server locally
 
-## Setup tested on nginx server:
+## Production on heroku [Finance Cloud](https://finance-cloud.herokuapp.com):
+    $ # To do in the local git repo
+    $ git push heroku master
+
+## Production on school nginx server [Finance Cloud](http://finance.srvz-webapp.he-arc.ch):
+    $ # To do at the root of the server
     $ git clone https://github.com/Rocla/Dixit.git
     $ sudo rsync -a --progress Finance_Cloud/ www/
     $ cd www
