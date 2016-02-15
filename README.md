@@ -9,14 +9,24 @@ What's not here must be on the wiki ;)
 - [Rails](http://rubyonrails.org)
 - [Bootstrap sass](https://github.com/twbs/bootstrap-sass)
 - [Bootstrap components](http://getbootstrap.com/components/)
-- [titre](lien)
+- [rails_best_practices](https://github.com/railsbp/rails_best_practices)
+- [example](example)
 
 ## Installed additional gems
-- bootstrap-sprockets
+- 'bootstrap-sass', '~> 3.3.6'
+- 'bcrypt', '~> 3.1.7'
+- 'puma'
 
 ## Useful commands
     $ docker-compose up -d
     $ docker exec -it ror_web_1 /bin/bash
-    # root@ror:/# su ruby
-    $ ruby@ror:/# cd /usr/src/app
+    $ su ruby
+    $ cd /usr/src/app
+    $ cd FinanceCloud
     $ rails s -b 0.0.0.0
+
+## Setup tested on nginx server:
+    $ git clone https://github.com/Rocla/Dixit.git
+    $ sudo rsync -a --progress Finance_Cloud/ www/
+    $ cd www
+    $ bundle install
