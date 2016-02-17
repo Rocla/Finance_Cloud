@@ -29,7 +29,13 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 gem 'capistrano-rails', group: :development
 
-gem 'tzinfo-data'
+
+group :windows do
+  # Solves a problem with windows install
+  # https://github.com/tzinfo/tzinfo/wiki/Resolving-TZInfo::DataSourceNotFound-Errors
+  gem 'tzinfo-data'
+end
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

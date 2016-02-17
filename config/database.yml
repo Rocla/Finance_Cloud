@@ -22,7 +22,13 @@ test:
 
 staging:
   <<: *default
-  database: db/production.sqlite3
+  database: <%= ENV['POSTGRES_USERNAME'] %>
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: <%= ENV['POSTGRES_USERNAME'] %>
+  password: <%= ENV['POSTGRES_ENV_POSTGRES_PASSWORD'] %>
+  host: postgres
 
 production:
   <<: *default
