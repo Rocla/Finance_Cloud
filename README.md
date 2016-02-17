@@ -13,9 +13,13 @@ What's not here must be on the wiki ;)
 - [example](example)
 
 ## Installed additional gems
+### Global
 - 'bootstrap-sass', '~> 3.3.6'
-- 'bcrypt', '~> 3.1.7'
+### Production
 - 'puma'
+- 'pg'
+- 'rails_12factor'
+- 'bcrypt', '~> 3.1.7'
 
 ## Development setup (locally)
     $ docker-compose up -d    # starts the VMs
