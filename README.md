@@ -79,8 +79,7 @@ What's not here must be on the wiki ;)
 
   *From your browser:*
 
-  - Go to https://github.com/settings/ssh
-  - Add the remote server copied public key
+Go to https://github.com/settings/ssh and add the copied remote server  public key
 
   *From the local container as username*
 
@@ -90,10 +89,16 @@ What's not here must be on the wiki ;)
     $ bundle exec cap staging deploy
 
   *From the remote server (ssh)*
+  
+    $ cd /usr/src/app/Finance_Cloud
+    $ sudo bundle install
+    $ bundle exec cap install
+    $ bundle exec cap staging deploy
 
-    $ sudo vim /etc/service/puma/run
+    $ sudo vi /etc/service/puma/run
     cd "/var/www/Finance_Cloud/current"
-    PUMA_ENV="/var/www/config/puma.rb"
+    $PUMA_ENV="/var/www/config/puma.rb"
+    
     $ vi ~/www/config/nginx.conf
     Environment “staging”
     root /var/www/Finance_Cloud/current/public
