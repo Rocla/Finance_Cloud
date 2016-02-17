@@ -7,9 +7,12 @@
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 # server 'db.example.com', user: 'deploy', roles: %w{db}
 
-server 'srvz-webapp.he-arc.ch', user: 'romain', roles: %w{app db web}
-#server 'srvz-webapp.he-arc.ch', user: 'matthieu', roles: %w{app db web}
-#server 'srvz-webapp.he-arc.ch', user: 'fabio', roles: %w{app db web}
+server 'srvz-webapp.he-arc.ch', user: ENV['USER'], roles: %w{app db web}
+
+set :ssh_options, {
+port: 2008
+}
+
 
 
 # role-based syntax
