@@ -30,11 +30,15 @@ What's not here must be on the wiki ;)
 
 ## Usage
 ### **Development** on local container
-Do once:
-- Do the installation setup of the container with instructions here: https://github.com/HE-Arc/demo-rails-application
+**Do once:**
+
+  Do the installation setup of the container with instructions here: https://github.com/HE-Arc/demo-rails-application
+
     $ cd container_install_directory
     $ git clone https://github.com/HE-Arc/Finance_Cloud.git
-Do each time:
+
+**Do each time:**
+
     $ cd container_install_directory/Finance_Cloud
     $ docker-compose up -d    # starts the VMs
     $ docker exec -it ror_web_1 /bin/bash   # go to the web VM
@@ -44,40 +48,49 @@ Do each time:
     $ rails s -b 0.0.0.0  # run the server locally
 
 ### **Production** on heroku [Finance Cloud](https://finance-cloud.herokuapp.com):
-Do each time:
-  From the local container as username
+**Do each time:**
+
+  *From the local container as username*
+
     $ cd /usr/src/app/Finance_Cloud
     $ git push heroku master
     $ heroku run rake db:migrate # migrate if needed
     $ heroku run rake db:seed # seed database if needed
 
 ### **Staging** on school's nginx server [Finance Cloud](http://finance.srvz-webapp.he-arc.ch):
-Do once:
-  From the local container as root
+**Do once:**
+
+  *From the local container as root*
+
     $ usermod -l username ruby    # remplace username by your server username [romain, matthieu, fabio]
     $ vi /etc/sudoers.d/ruby    # remplace ruby by username
     $ su username
 
-  From the local container as username
+  *From the local container as username*
+
     $ ssh-keygen # no passphrase
     $ more ~/.ssh/id_rsa.pub  # copy the public key
 
-  From the remote server (ssh)
+  *From the remote server (ssh)*
+
     $ vi ./ssh/authorized_keys  # add the copied public key from local container
     $ ssh-keygen # no passphrase
     $ more ~/.ssh/id_rsa.pub  # copy the public key
 
-  From your browser:
-    - Go to https://github.com/settings/ssh
-    - Add the remote server copied public key
+  *From your browser:*
 
-  From the local container as username
+  - Go to https://github.com/settings/ssh
+  - Add the remote server copied public key
+
+  *From the local container as username*
+
     $ cd /usr/src/app/Finance_Cloud
     $ sudo bundle install
     $ bundle exec cap install
     $ bundle exec cap staging deploy
 
-  From the remote server (ssh)
+  *From the remote server (ssh)*
+
     $ sudo vim /etc/service/puma/run
     `cd "/var/www/Finance_Cloud/current"`
     `PUMA_ENV="/var/www/config/puma.rb"`
@@ -87,6 +100,8 @@ Do once:
     `PUMA_ENV="/var/www/config/puma.rb"`
     `directory “/var/www/app/current”`
 
-Do each time:
-  From the local container as username (NB push changes to git repo)
+**Do each time:**
+
+  *From the local container as username (NB push changes to git repo)*
+
     $ bundle exec cap staging deploy
