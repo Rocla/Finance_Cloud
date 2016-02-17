@@ -27,7 +27,7 @@ staging:
   encoding: unicode
   pool: 5
   username: <%= ENV['POSTGRES_USERNAME'] %>
-  password: <%= ENV['POSTGRES_ENV_POSTGRES_PASSWORD'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
   host: postgres
 
 production:
