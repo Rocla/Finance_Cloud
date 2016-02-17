@@ -92,13 +92,13 @@ What's not here must be on the wiki ;)
   *From the remote server (ssh)*
 
     $ sudo vim /etc/service/puma/run
-    `cd "/var/www/Finance_Cloud/current"`
-    `PUMA_ENV="/var/www/config/puma.rb"`
+    cd "/var/www/Finance_Cloud/current"
+    PUMA_ENV="/var/www/config/puma.rb"
     $ vi ~/www/config/nginx.conf
-    `Environment “staging”`
-    `root /var/www/Finance_Cloud/current/public`
-    `PUMA_ENV="/var/www/config/puma.rb"`
-    `directory “/var/www/app/current”`
+    Environment “staging”
+    root /var/www/Finance_Cloud/current/public
+    PUMA_ENV="/var/www/config/puma.rb"
+    directory “/var/www/app/current”
 
 **Do each time:**
 
