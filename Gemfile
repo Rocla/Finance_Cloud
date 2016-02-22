@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.5'
+gem 'rails', '4.2.5.1'
 # Use SCSS for stylesheets
 # https://github.com/twbs/bootstrap-sass
 gem 'bootstrap-sass', '~> 3.3.6'
@@ -28,14 +28,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Capistrano for deployment
 gem 'capistrano-rails', group: :development
-
-
-group :windows do
-  # Solves a problem with windows install
-  # https://github.com/tzinfo/tzinfo/wiki/Resolving-TZInfo::DataSourceNotFound-Errors
-  gem 'tzinfo-data'
-end
-
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

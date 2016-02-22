@@ -18,9 +18,6 @@ What's not here must be on the wiki ;)
 ### Global
 - 'bootstrap-sass', '~> 3.3.6'
 
-### Windows specific
-- 'tzinfo-data'
-
 ### Staging
 - 'puma'
 - 'bcrypt', '~> 3.1.7'
@@ -47,6 +44,24 @@ What's not here must be on the wiki ;)
     $ cd /usr/src/app/Finance_Cloud
     $ bundle install --without production windows # to do after gemfile modifications
     $ rails s -b 0.0.0.0  # run the server locally
+
+**Do for "security" updates:**
+Create security update:
+
+    $ su username
+    $ cd /usr/src/app/Finance_Cloud
+    $ git checkout -b rails-upgrade # create rails-upgrade branch
+    $ sed -i "s/gem 'rails', '4.2.5'/gem 'rails', '4.2.5.1'/" Gemfile # rename rails version
+    $ bundle update rails
+    $ bundle exec rake
+    $ git add -p . # -p is used to choose for to commit (y=yes, n=no, a=always)
+    $ git commit -m "Security update for rails"
+
+Deploy security update on the staging server:
+
+    $ git checkout master
+    $ git merge rails-upgrade
+    $ cap deploy
 
 ### **Production** on heroku [Finance Cloud](https://finance-cloud.herokuapp.com):
 **Do each time:**
@@ -90,16 +105,11 @@ Go to https://github.com/settings/ssh and add the copied remote server  public k
     $ bundle exec cap staging deploy
 
   *From the remote server (ssh)*
-  
-    $ cd /usr/src/app/Finance_Cloud
-    $ sudo bundle install
-    $ bundle exec cap install
-    $ bundle exec cap staging deploy
 
     $ sudo vi /etc/service/puma/run
     cd "/var/www/Finance_Cloud/current"
     $PUMA_ENV="/var/www/config/puma.rb"
-    
+
     $ vi ~/www/config/nginx.conf
     Environment “staging”
     root /var/www/Finance_Cloud/current/public
