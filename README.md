@@ -35,6 +35,12 @@ What's not here must be on the wiki ;)
     $ cd container_install_directory
     $ git clone https://github.com/HE-Arc/Finance_Cloud.git
 
+  *From the local container as root*
+
+    $ usermod -l username ruby    # remplace username by your server username [romain, matthieu, fabio]
+    $ vi /etc/sudoers.d/ruby    # remplace ruby by username
+
+
 **Do each time:**
 
     $ cd container_install_directory
@@ -77,14 +83,8 @@ Deploy security update on the staging server:
 ### **Staging** on school's nginx server [Finance Cloud](http://finance.srvz-webapp.he-arc.ch):
 **Do once:**
 
-  *From the local container as root*
-
-    $ usermod -l username ruby    # remplace username by your server username [romain, matthieu, fabio]
-    $ vi /etc/sudoers.d/ruby    # remplace ruby by username
-    $ su username
-
-  *From the local container as username*
-
+  *From the local container*
+    $ su username # if as root
     $ ssh-keygen # no passphrase
     $ more ~/.ssh/id_rsa.pub  # copy the public key
 
