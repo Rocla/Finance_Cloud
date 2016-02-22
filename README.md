@@ -40,7 +40,7 @@ What's not here must be on the wiki ;)
 
 **Do each time:**
 
-    $ cd container_install_directory/Finance_Cloud
+    $ cd container_install_directory
     $ docker-compose up -d    # starts the VMs
     $ docker exec -it ror_web_1 /bin/bash   # go to the web VM
     $ su username
