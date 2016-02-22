@@ -30,7 +30,7 @@ What's not here must be on the wiki ;)
 ### **Development** on local container
 **Do once:**
 
-  Do the installation setup of the container with instructions here: https://github.com/HE-Arc/demo-rails-application
+  Do the installation setup of the container with instructions ( [repository](https://github.com/HE-Arc/demo-rails-application#this-repository) & [Containers](https://github.com/HE-Arc/demo-rails-application#containers)) here: https://github.com/HE-Arc/demo-rails-application
 
     $ cd container_install_directory
     $ git clone https://github.com/HE-Arc/Finance_Cloud.git
@@ -46,6 +46,7 @@ What's not here must be on the wiki ;)
     $ rails s -b 0.0.0.0  # run the server locally
 
 **Do for "security" updates:**
+
 Create security update:
 
     $ su username
@@ -54,7 +55,7 @@ Create security update:
     $ sed -i "s/gem 'rails', '4.2.5'/gem 'rails', '4.2.5.1'/" Gemfile # rename rails version
     $ bundle update rails
     $ bundle exec rake
-    $ git add -p . # -p is used to choose for to commit (y=yes, n=no, a=always)
+    $ git add -p . # -p is used to choose for to commit (y=yes, n=no, a=always) could use -A instead as well for adding all modifications
     $ git commit -m "Security update for rails"
 
 Deploy security update on the staging server:
