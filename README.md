@@ -11,6 +11,7 @@ What's not here must be on the wiki ;)
 - [Bootstrap components](http://getbootstrap.com/components/)
 - [rails_best_practices](https://github.com/railsbp/rails_best_practices)
 - [Try Ruby](http://tryruby.org)
+- [Issue and Pull Request templates](https://github.com/blog/2111-issue-and-pull-request-templates)
 - [example](example)
 
 ## Used particular gems
