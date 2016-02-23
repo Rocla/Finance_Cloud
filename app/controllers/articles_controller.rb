@@ -46,7 +46,6 @@ class ArticlesController < ApplicationController
     def article_values
       params.require(:article).permit(:title, :content)
     end
-
     def get_current_article
       @article = Article.find(params[:id])
     end
