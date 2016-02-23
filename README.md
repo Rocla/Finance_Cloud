@@ -1,4 +1,4 @@
-# Cloud Finance Readme
+# Cloud Finance
 [![Build Status](https://travis-ci.org/HE-Arc/Finance_Cloud.svg?branch=master)](https://travis-ci.org/HE-Arc/Finance_Cloud)
 
 Ruby Project by Romain Claret, Matthieu Bandelier, \& Fabio Marques

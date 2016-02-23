@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :get_current_user, only: [:edit, :update]
+  before_action :get_current_user, only: [:edit, :update, :show]
 
   def new
     @user = User.new
@@ -25,6 +25,9 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def show
   end
 
   private
