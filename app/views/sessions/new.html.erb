@@ -1,0 +1,19 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">Log in</div>
+
+  <div class="panel-body">
+    <%= form_for :session, url: login_path do |u| %>
+      <p>
+        <%= u.label :email %><br/>
+        <%= u.email_field :email, placeholder: "Your email", autofocus: true %>
+      </p>
+      <p>
+        <%= u.label :password %><br/>
+        <%= u.password_field :password, placeholder: "Your password", autocomplete: "off" %>
+      </p>
+      <p>
+        <%= u.submit "Log in" %>
+      </p>
+    <% end %>
+  </div>
+</div>

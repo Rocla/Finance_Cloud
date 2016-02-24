@@ -1,21 +1,4 @@
-
-
-
-<% if @article.errors.any? %>
-<h2>
-<% if @article.errors.count > 1 %>
-The following errors occured during the article creation
-<% else %>
-The following error occured during the article creation
-<% end %>
-</h2>
-
-<ul>
-  <% @article.errors.full_messages.each do |msg| %>
-  <li><%= msg %></li>
-  <% end %>
-</ul>
-<% end %>
+<%= render 'shared/errors', object: @article %>
 
 <%= form_for @article do |a| %>
   <p>
@@ -27,7 +10,6 @@ The following error occured during the article creation
     <%= a.text_area :content %>
   </p>
   <p>
-    <%= a.submit %>
+    <%= a.submit(@article.new_record? ? "Create new article" : "Update this article")  %>
   </p>
-
 <% end %>

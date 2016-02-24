@@ -1,4 +1,4 @@
-# Cloud Finance Readme
+# Cloud Finance
 [![Build Status](https://travis-ci.org/HE-Arc/Finance_Cloud.svg?branch=master)](https://travis-ci.org/HE-Arc/Finance_Cloud)
 
 Ruby Project by Romain Claret, Matthieu Bandelier, \& Fabio Marques
@@ -15,6 +15,7 @@ What's not here must be on the wiki ;)
 - [rails_best_practices](https://github.com/railsbp/rails_best_practices)
 - [Try Ruby](http://tryruby.org)
 - [Issue and Pull Request templates](https://github.com/blog/2111-issue-and-pull-request-templates)
+- [Ruby regular expression editor](http://rubular.com)
 - [example](example)
 
 ## Used particular gems
@@ -45,7 +46,7 @@ What's not here must be on the wiki ;)
     $ docker exec -it ror_web_1 /bin/bash   # go to the web VM
     $ su username
     $ cd /usr/src/app/Finance_Cloud
-    $ bundle install --without production windows # to do after gemfile modifications
+    $ bundle install --without production # to do after gemfile modifications
     $ rails s -b 0.0.0.0  # run the server locally
 
 **Do for "security" updates:**
