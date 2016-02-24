@@ -1,20 +1,19 @@
 <%= render 'shared/errors', object: @user %>
 
-<%= form_for @user do |a| %>
+<%= form_for @user do |u| %>
   <p>
-    <%= a.label :username %><br/>
-    <%= a.text_field :username %>
+    <%= u.label :username %><br/>
+    <%= u.text_field :username, placeholder: "Choose a username", autofocus: true %>
   </p>
   <p>
-    <%= a.label :email %><br/>
-    <%= a.email_field :email %>
+    <%= u.label :email %><br/>
+    <%= u.email_field :email, placeholder: "Enter your email address" %>
   </p>
   <p>
-    <%= a.label :password %><br/>
-    <%= a.password_field :password %>
+    <%= u.label :password %><br/>
+    <%= u.password_field :password, placeholder: "Choose a password", autocomplete: "off" %>
   </p>
   <p>
-    <%= a.submit(@user.new_record? ? "Sign up" : "Update your profile")  %>
+    <%= u.submit(@user.new_record? ? "Sign up" : "Update your profile")  %>
   </p>
-
 <% end %>

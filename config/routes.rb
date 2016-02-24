@@ -2,23 +2,35 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  # Root of the site
   root 'pages#home'
 
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
+  # Routes
+  # Example Regular route: get 'products/:id' => 'catalog#view'
+  # Example Resource routes: resources :products (maps HTTP verbs to controller actions automatically)
+
+  ## Pages
+  ### home on root as well
+  get 'home', to: 'pages#home'
+
+  ## Blog
   get 'blog/home', to: 'blog#home'
   get 'blog/search', to: 'blog#search'
+
+  ## Articles
+  resources :articles
+
+  ## Users
   get 'signup', to: 'users#new'
+  resources :users#, except: [:new]
+
+  ## Sessions
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-  resources :articles
-  resources :users#, except: [:new]
 
   # Example resource route with options:
   #   resources :products do
