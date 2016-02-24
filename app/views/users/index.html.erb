@@ -7,6 +7,7 @@
         <tr>
           <th>Avatar</th>
           <th>Username</th>
+          <th>Articles</th>
           <% if is_admin %>
             <th colspan="2">Admin Actions</th>
           <% end %>
@@ -17,6 +18,7 @@
       <tr>
         <td><%= link_to get_gravatar(u, size:25), user_path(u) %></td>
         <td><%= link_to u.username, user_path(u)  %></td>
+        <td><%= u.articles.count  %></td>
         <% if is_admin %>
           <td><%= link_to 'Edit', edit_user_path(u) %></td>
           <td><%= link_to 'Delete', user_path(u), method: :delete, data: {confirm: "Are you sure to delete this user?"} %></td>

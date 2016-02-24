@@ -5,6 +5,16 @@
     <%= link_to "Edit this article", edit_article_path(@article) %><br/>
     <br/>
     <p>
+      <%= link_to get_gravatar(@article.user, size:100), user_path(@article.user) %><br/>
+      Author: <%= link_to @article.user.username, user_path(@article.user) %>
+    </p>
+    <p>
+      Created: <%= time_ago_in_words(@article.created_at) %> ago
+    </p>
+    <p>
+      Updated: <%= time_ago_in_words(@article.updated_at) %> ago
+    </p>
+    <p>
       Title: <%= @article.title %>
     </p>
     <p>

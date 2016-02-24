@@ -5,3 +5,19 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+# Seed Users:
+User.create(username: "admin", email: "admin@finance.cloud", password: "admin")
+User.create(username: "modo", email: "modo@finance.cloud", password: "modo")
+User.create(username: "user", email: "user@finance.cloud", password: "user")
+
+# Seed Articles:
+Article.create(title: "Admin Article 1", content: "This is generated content from the seed", user_id: 1)
+Article.create(title: "Admin Article 2", content: "This is generated content from the seed", user_id: 1)
+Article.create(title: "Modo Article 1", content: "This is generated content from the seed", user_id: 2)
+Article.create(title: "Modo Article 2", content: "This is generated content from the seed", user_id: 2)
+Article.create(title: "Modo Article 3", content: "This is generated content from the seed", user_id: 2)
+Article.create(title: "User Article 1", content: "This is generated content from the seed", user_id: 3)
+Article.create(title: "User Article 2", content: "This is generated content from the seed", user_id: 3)
+Article.create(title: "User Article 3", content: "This is generated content from the seed", user_id: 3)
+Article.create(title: "User Article 4", content: "This is generated content from the seed", user_id: 3)

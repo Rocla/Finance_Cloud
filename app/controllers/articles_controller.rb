@@ -11,6 +11,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_values)
+    @article.user = get_user
     if @article.save
       flash[:success] = "Article was created"
       #flash[:notice] = "render plain: params[:article].inspect"

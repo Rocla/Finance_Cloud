@@ -1,27 +1,4 @@
 <div class="panel panel-primary">
   <div class="panel-heading">List of articles</div>
-
-  <div class="panel-body">
-    <table style="width:100%">
-      <h2>
-        <tr>
-          <th>Title</th>
-          <th>Content</th>
-          <% if is_admin %>
-            <th colspan="2">Actions</th>
-          <% end %>
-        </tr>
-      </h2>
-
-      <% @articles.each do |a| %>
-      <tr>
-        <td><%= link_to a.title, article_path(a) %></td>
-        <td><%= link_to a.content, article_path(a) %></td>
-        <% if is_admin %>
-          <td><%= link_to 'Edit', edit_article_path(a) %></td>
-          <td><%= link_to 'Delete', article_path(a), method: :delete, data: {confirm: "Are you sure to delete this article?"} %></td>
-        <% end %>
-      </tr>
-      <% end %>
-    </table>
-  </div>
+ 
+  <%= render 'articles', object: @articles %>

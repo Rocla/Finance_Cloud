@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     @user = User.new(user_values)
     if @user.save
       flash[:success] = "Hey #{@user.username}! Welcome to the finance universe!"
+      session[:user_id] = @user.id
       redirect_to articles_path
     else
       render 'new'

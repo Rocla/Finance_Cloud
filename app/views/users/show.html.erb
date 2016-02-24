@@ -4,4 +4,11 @@
   <div class="panel-body">
     <%= get_gravatar @user, size: 250 %>
   </div>
+  <% if @user.articles.any? %>
+    <%= render 'articles', object: @user.articles %>
+  <% else %>
+    <div class="panel-body">
+      This user has no articles
+    </div>
+  <% end %>
 </div>
