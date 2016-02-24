@@ -40,7 +40,6 @@ class SessionsController < ApplicationController
       params.require(:user).permit(:username, :email, :password)
     end
     def validate_email(email)
-      reg = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
-      return (reg.match(email))? true : false
+      email =~ /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
     end
 end
