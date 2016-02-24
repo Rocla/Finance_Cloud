@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
-  before_action :get_current_user, only: [:edit, :update, :show]
+  before_action :get_current_user, only: [:edit, :update, :show, :destroy]
+
+  def index
+    @users = User.all
+  end
 
   def new
     @user = User.new
@@ -28,6 +32,13 @@ class UsersController < ApplicationController
   end
 
   def show
+  end
+
+  def destroy
+    if @user.destroy
+      flash[:success] = "User was deleted"
+    end
+    redirect_to users_path
   end
 
   private

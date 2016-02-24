@@ -1,0 +1,24 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">List of users</div>
+
+  <div class="panel-body">
+    <table style="width:100%">
+      <h2>
+        <tr>
+          <th>Avatar</th>
+          <th>Username</th>
+          <th colspan="3">Admin Actions</th>
+        </tr>
+      </h2>
+
+      <% @users.each do |u| %>
+      <tr>
+        <td><%= link_to get_gravatar(u, size:25), user_path(u) %></td>
+        <td><%= link_to u.username, user_path(u)  %></td>
+        <td><%= link_to 'Show', user_path(u) %></td>
+        <td><%= link_to 'Edit', edit_user_path(u) %></td>
+        <td><%= link_to 'Delete', user_path(u), method: :delete, data: {confirm: "Are you sure to delete this user?"} %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
