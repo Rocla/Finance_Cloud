@@ -1,5 +1,10 @@
 <div class="panel panel-primary">
-  <div class="panel-heading">Edit your profile</div>
+
+  <div class="panel-heading"><% if admin? %>
+    <%= "Edit this profile" %>
+  <% else %>
+    <%= "Edit your profile"  %>
+  <% end %></div>
 
   <div class="panel-body">
     <%= render 'form' %>

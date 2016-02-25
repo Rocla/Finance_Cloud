@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
-  before_action :get_current_user, only: [:edit, :update, :show, :destroy]
+  before_action :current_user_ref, only: [:edit, :update, :show, :destroy]
+  before_action :require_user, except: [:index, :new, :create, :show]
+  before_action :require_same_user, only:[:edit, :update, :destroy]
+
 
   def index
     @users = User.all
@@ -25,8 +28,8 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_values)
-      flash[:success] = "Your profile has been updated"
-      redirect_to articles_path
+      flash[:success] = "This user profile has been updated"
+      redirect_to user_path(@user)
     else
       render 'edit'
     end
@@ -37,16 +40,29 @@ class UsersController < ApplicationController
 
   def destroy
     if @user.destroy
-      flash[:success] = "User was deleted"
+      Article.where(user: @user).update_all(user_id: 1)
+      if current_user == @user
+        flash[:success] = "We are sorry that you leave, your user profile is gone now :("
+        session[:user_id] = nil
+        redirect_to root_path
+      else
+        flash[:success] = "This user is gone"
+        redirect_to users_path
+      end
     end
-    redirect_to users_path
   end
 
   private
     def user_values
-      params.require(:user).permit(:username, :email, :password)
+      params.require(:user).permit(:username, :email, :password, :rank)
     end
-    def get_current_user
+    def current_user_ref
       @user = User.find(params[:id])
+    end
+    def require_same_user
+      if current_user != @user && !admin?
+        flash[:error] = "You are not allowed to do that"
+        redirect_to user_path(@user.id)
+      end
     end
 end

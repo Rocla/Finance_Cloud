@@ -13,7 +13,17 @@
     <%= u.label :password %><br/>
     <%= u.password_field :password, placeholder: "Choose a password", autocomplete: "off" %>
   </p>
+  <% if admin? %>
+    <p>
+      <%= u.label :rank %><br/>
+      <%= u.text_field :rank, placeholder: "Change user rank", autocomplete: "off" %>
+    </p>
+  <% end %>
   <p>
-    <%= u.submit(@user.new_record? ? "Sign up" : "Update your profile")  %>
+    <% if admin? %>
+      <%= u.submit "Update this profile" %>
+    <% else %>
+      <%= u.submit(@user.new_record? ? "Sign up" : "Update your profile")  %>
+    <% end %>
   </p>
 <% end %>

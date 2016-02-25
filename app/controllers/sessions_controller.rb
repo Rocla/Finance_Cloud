@@ -12,16 +12,16 @@ class SessionsController < ApplicationController
           redirect_to user_path(user)
         else
           # TODO give email has argument
-          flash.now[:error] = "Your password is incorrect"
+          flash[:error] = "Your password is incorrect"
           render 'new'
         end
       else
         # TODO give email has argument
-        flash.now[:error] = "Non-existing email address"
+        flash[:error] = "Non-existing email address"
         render 'new'
       end
     else
-      flash.now[:error] = "Wrong email format"
+      flash[:error] = "Wrong email format"
       # TODO give email has argument
       render 'new'
     end

@@ -1,5 +1,12 @@
 <div class="panel panel-primary">
   <div class="panel-heading"><%= @user.username %>'s public profile</div>
+  <!-- TODO use the rank table to fetch the name of the rank -->
+  User rank: <strong><%= @user.rank %></strong>
+  <% if current_user == @user || admin? %>
+  <br/><strong>Actions on profile:</strong>
+    <%= link_to 'Edit', edit_user_path(@user) %>
+    <%= link_to 'Delete', user_path(@user), method: :delete, data: {confirm: "Are you sure to delete this profile?"} %>
+  <% end %>
 
   <div class="panel-body">
     <%= get_gravatar @user, size: 250 %>

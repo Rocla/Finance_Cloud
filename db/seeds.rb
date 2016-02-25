@@ -7,9 +7,9 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # Seed Users:
-User.create(username: "admin", email: "admin@finance.cloud", password: "admin")
-User.create(username: "modo", email: "modo@finance.cloud", password: "modo")
-User.create(username: "user", email: "user@finance.cloud", password: "user")
+User.create(username: "Admin", email: "admin@finance.cloud", password: "admin", rank: 999)
+User.create(username: "Moderator", email: "modo@finance.cloud", password: "modo", rank: 1)
+User.create(username: "User", email: "user@finance.cloud", password: "user", rank: 0)
 
 # Seed Articles:
 Article.create(title: "Admin Article 1", content: "This is generated content from the seed", user_id: 1)
