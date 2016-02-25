@@ -6,7 +6,7 @@
         <th>Content</th>
         <th>Created</th>
         <th>Updated</th>
-        <% if is_user && (object.first == get_user.articles.first || is_admin)%>
+        <% if user? && (object.first == current_user.articles.first || admin?)%>
           <th colspan="2">Actions</th>
         <% end %>
       </tr>
@@ -18,7 +18,7 @@
       <td><%= link_to a.content, article_path(a) %></td>
       <td><%= time_ago_in_words(a.created_at) %> ago</td>
       <td><%= time_ago_in_words(a.updated_at) %> ago</td>
-      <% if is_user && (object.first == get_user.articles.first || is_admin)%>
+      <% if user? && (object.first == current_user.articles.first || admin?)%>
         <td><%= link_to 'Edit', edit_article_path(a) %></td>
         <td><%= link_to 'Delete', article_path(a), method: :delete, data: {confirm: "Are you sure to delete this article?"} %></td>
       <% end %>
