@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :articles
+
   has_secure_password
   before_save {self.email = email.downcase}
 
@@ -13,4 +15,7 @@ class User < ActiveRecord::Base
             length: {minimum: 3, maximum: 100},
             uniqueness: {case_sensitive: false},
             format: { with: VALID_EMAIL_REGEX }
+
+  validates :rank,
+            numericality: { less_than_or_equal_to: 999 }
 end

@@ -19,8 +19,12 @@ What's not here must be on the wiki ;)
 - [example](example)
 
 ## Used particular gems
+
 ### Global
 - 'bootstrap-sass', '~> 3.3.6'
+
+### Development
+- 'byebug' # **debugger** and ctrl-d to release
 
 ### Staging
 - 'puma'

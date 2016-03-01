@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   ## Users
   get 'signup', to: 'users#new'
-  resources :users#, except: [:new]
+  resources :users
 
   ## Sessions
   get 'login', to: 'sessions#new'

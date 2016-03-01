@@ -3,11 +3,11 @@
 <%= form_for @article do |a| %>
   <p>
     <%= a.label :title %><br/>
-    <%= a.text_field :title %>
+    <%= a.text_field :title, placeholder: "Choose a title", autofocus: true %>
   </p>
   <p>
     <%= a.label :content %><br/>
-    <%= a.text_area :content %>
+    <%= a.text_area :content, placeholder: "Create your article here" %>
   </p>
   <p>
     <%= a.submit(@article.new_record? ? "Create new article" : "Update this article")  %>

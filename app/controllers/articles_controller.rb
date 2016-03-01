@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
-  before_action :get_current_article, only: [:show, :edit, :update, :destroy]
+  before_action :current_article_ref, only: [:show, :edit, :update, :destroy]
+  before_action :require_user, except: [:index, :show]
+  before_action :require_article_owner, only:[:edit, :update, :destroy]
 
   def index
     @articles = Article.all
@@ -11,6 +13,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_values)
+    @article.user = current_user
     if @article.save
       flash[:success] = "Article was created"
       #flash[:notice] = "render plain: params[:article].inspect"
@@ -46,7 +49,13 @@ class ArticlesController < ApplicationController
     def article_values
       params.require(:article).permit(:title, :content)
     end
-    def get_current_article
+    def current_article_ref
       @article = Article.find(params[:id])
+    end
+    def require_article_owner
+      if current_user != @article.user && !moderator?
+        flash[:error] = "You are not allowed to do that"
+        redirect_to article_path(@article)
+      end
     end
 end
