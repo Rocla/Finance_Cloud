@@ -24,9 +24,9 @@ ActiveRecord::Schema.define(version: 20160301204629) do
   create_table "stocks", force: :cascade do |t|
     t.string   "name"
     t.string   "ticker"
-    t.decimal  "last_closing"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.decimal  "last_value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -48,7 +48,7 @@ What's not here must be on the wiki ;)
     $ cd container_install_directory
     $ docker-compose up -d    # starts the VMs
     $ docker exec -it ror_web_1 /bin/bash   # go to the web VM
-    $ su username
+    # su username
     $ cd /usr/src/app/Finance_Cloud
     $ bundle install --without production # to do after gemfile modifications
     $ rails s -b 0.0.0.0  # run the server locally
@@ -57,7 +57,7 @@ What's not here must be on the wiki ;)
 
 Create security update:
 
-    $ su username
+    # su username
     $ cd /usr/src/app/Finance_Cloud
     $ git checkout -b rails-upgrade # create rails-upgrade branch
     $ sed -i "s/gem 'rails', '4.2.5'/gem 'rails', '4.2.5.1'/" Gemfile # rename rails version
@@ -87,9 +87,9 @@ Deploy security update on the staging server:
 
   *From the local container as root*
 
-    $ usermod -l username ruby    # remplace username by your server username [romain, matthieu, fabio]
-    $ vi /etc/sudoers.d/ruby    # remplace ruby by username
-    $ su username
+    # usermod -l username ruby    # remplace username by your server username [romain, matthieu, fabio]
+    # vi /etc/sudoers.d/ruby    # remplace ruby by username
+    # su username
 
   *From the local container as username*
 
