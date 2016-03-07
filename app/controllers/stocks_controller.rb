@@ -4,7 +4,7 @@ class StocksController < ApplicationController
 
   def search
     if params[:ticker]
-      @stock = Stock.search_stock_by_ticker(params[:ticker])
+      @stock = Stock.where(params.permit(:ticker).to_h).first
       @stock ||= Stock.retrieve_stock_by_ticker(params[:ticker])
     end
     if @stock
