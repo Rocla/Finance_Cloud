@@ -16,6 +16,7 @@ What's not here must be on the wiki ;)
 - [Try Ruby](http://tryruby.org)
 - [Issue and Pull Request templates](https://github.com/blog/2111-issue-and-pull-request-templates)
 - [Ruby regular expression editor](http://rubular.com)
+- [Automatically Run Migrations When Deploying to Heroku](http://gunpowderlabs.com/blog/automatically-run-migrations-when-deploying-to-heroku/)
 - [example](example)
 
 ## Used particular gems
