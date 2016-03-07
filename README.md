@@ -36,6 +36,11 @@ What's not here must be on the wiki ;)
 
 ## Usage
 ### **Development** on local container
+
+**Reminder**
+
+  - Local address: http://192.168.99.100:3000/
+
 **Do once:**
 
   Do the installation setup of the container with instructions ( [repository](https://github.com/HE-Arc/demo-rails-application#this-repository) & [Containers](https://github.com/HE-Arc/demo-rails-application#containers)) here: https://github.com/HE-Arc/demo-rails-application
