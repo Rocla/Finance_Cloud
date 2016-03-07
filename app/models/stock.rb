@@ -8,11 +8,11 @@ class Stock < ActiveRecord::Base
     return nil unless retrieved_stock.name
 
     new_stock = new(name: retrieved_stock.name, ticker: retrieved_stock.symbol)
-    new_stock.last_value = new_stock.price?
+    new_stock.last_value = new_stock.get_latest_value
     new_stock
   end
 
-  def price?
+  def get_latest_value
     closing_price = StockQuote::Stock.quote(ticker).close
     return "#{closing_price} (Closing)" if closing_price
 
