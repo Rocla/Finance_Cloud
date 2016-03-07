@@ -138,15 +138,15 @@ example with User model
 
 **generate test files (first time only)**
 
-  $ rails generate scaffold user username:string email:string password_digest:string --skip
+    $ rails generate scaffold user username:string email:string password_digest:string --skip
 
 ### Unit Tests
 
 **preparing application for testing**
 
-  $ rake db:migrate
-  $ rake db:test:load
+    $ rake db:migrate
+    $ rake db:test:load
 
 **running unit tests**
 
-ruby -Itest test/models/user_test.rb
+    $ ruby -Itest test/models/user_test.rb
