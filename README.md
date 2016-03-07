@@ -134,19 +134,25 @@ Go to https://github.com/settings/ssh and add the copied remote server  public k
 
 ## Tests
 
-example with User model
+Example with User model
 
-**generate test files (first time only)**
+**Generate test files (first time only)**
 
     $ rails generate scaffold user username:string email:string password_digest:string --skip
 
 ### Unit Tests
 
-**preparing application for testing**
+**Preparing application for testing**
 
     $ rake db:migrate
     $ rake db:test:load
 
-**running unit tests**
+**Running unit tests**
 
     $ ruby -Itest test/models/user_test.rb
+    
+### General
+
+  **Run all tests**
+
+    $ rake test
