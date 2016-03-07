@@ -1,38 +1,45 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
+  setup do
+    $user = users(:valid_one)
+  end
   
+  test "can register" do
+	user = User.new(username: "UserX", email: "lol@finance.cloud", password: "admin")
+    assert user.save, "Error : fail saving valid user"
+  end
+
   test "no username twice" do
-    user1 = User.new(username: "Admin", email: "admin@finance.cloud", password: "admin")
-    assert user1.save, "Error : failing saving user1"
-	
-	user2 = User.new(username: "Admin", email: "admin@finance.cloud", password: "admin")
-    assert !user2.save, "Error : success saving user2, which has same username as user1"
+	user = User.new(username: $user.username, email: "lol@finance.cloud", password: "admin")
+    assert !user.save, "Error : success saving user with same username"
+  end
+  
+  test "no email twice" do
+	user = User.new(username: "userX", email: $user.email, password: "admin")
+    assert !user.save, "Error : success saving user with same email"
   end
   
   test "username too short" do
-    user1 = User.new(username: "Ad", email: "admin@finance.cloud", password: "admin")
-    assert !user1.save, "Error : sucess saving user1, username too short"
+    user = User.new(username: "Ad", email: "lol@finance.cloud", password: "admin")
+    assert !user.save, "Error : sucess saving user, username too short"
   end
   
   test "username too long" do
-    user1 = User.new(username: "1234567890123456", email: "admin@finance.cloud", password: "admin")
-    assert !user1.save, "Error : sucess saving user1, username too long"
+    user = User.new(username: "1234567890123456", email: "lol@finance.cloud", password: "admin")
+    assert !user.save, "Error : sucess saving user, username too long"
   end
   
   test "invalid email" do
-    user1 = User.new(username: "Admin2", email: "admin@finance.", password: "admin")
-    assert !user1.save, "Error : sucess saving user1, invalid email"
+    user = User.new(username: "Admin2", email: "lol@finance.", password: "admin")
+    assert !user.save, "Error : sucess saving user, invalid email"
   end
   
   test "invalid rank" do
-    user1 = User.new(username: "Admin3", email: "admin@finance.cloud", password: "admin", rank: 1000)
-    assert !user1.save, "Error : sucess saving user1, invalid rank"
+    user = User.new(username: "Admin3", email: "lol@finance.cloud", password: "admin", rank: 1000)
+    assert !user.save, "Error : sucess saving user, invalid rank"
   end
   
-  test "too easy password" do
-    user1 = User.new(username: "Admin4", email: "admin@finance.cloud", password: "1")
-    assert !user1.save, "Error : sucess saving user1, password too easy"
-  end
+  #TODO password tests
   
 end
