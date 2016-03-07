@@ -130,3 +130,23 @@ Go to https://github.com/settings/ssh and add the copied remote server  public k
   *From the local container as username (NB push changes to git repo)*
 
     $ bundle exec cap staging deploy
+
+
+## Tests
+
+example with User model
+
+**generate test files (first time only)**
+
+  $ rails generate scaffold user username:string email:string password_digest:string --skip
+
+### Unit Tests
+
+**preparing application for testing**
+
+  $ rake db:migrate
+  $ rake db:test:load
+
+**running unit tests**
+
+ruby -Itest test/models/user_test.rb
