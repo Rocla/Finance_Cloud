@@ -1,9 +1,9 @@
-<div id="stock-search" class="panel-body">
+<div id="stock-search-result" class="panel-body">
   <div class="panel-heading">
     <%= form_tag stocks_search_path, id: 'stock-search-id', remote: true, method: :get do %>
       <div>
         <div>
-          <%= text_field_tag :ticker, params[:ticker], autofocus: true, placeholder: "Seach by ticker" %>
+          <%= text_field_tag :ticker, params[:ticker], autofocus: true, placeholder: "Search by ticker" %>
         </div>
         <div>
           <br/><%= button_tag(type: :submit) do %> Search for a stock <% end %>
