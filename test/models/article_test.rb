@@ -22,22 +22,22 @@ class ArticleTest < ActiveSupport::TestCase
   
   test "title too short" do
 	article = Article.new(title: "a" * 2, content: "holy moly, this is just content for testing purpose", user_id: 1)
-    assert !article.save, "Error : success saving unvalid article"
+    assert_not article.save, "Error : success saving unvalid article"
   end
   
   test "title too long" do
 	article = Article.new(title: "a" * 51, content: "holy moly, this is just content for testing purpose", user_id: 1)
-    assert !article.save, "Error : success saving unvalid article"
+    assert_not article.save, "Error : success saving unvalid article"
   end
   
   test "content too short" do
 	article = Article.new(title: "beautiful tittle", content: "a" * 9, user_id: 1)
-    assert !article.save, "Error : success saving unvalid article"
+    assert_not article.save, "Error : success saving unvalid article"
   end
   
   test "content too long" do
 	article = Article.new(title: "beautiful tittle", content: "a" * 501, user_id: 1)
-    assert !article.save, "Error : success saving unvalid article"
+    assert_not article.save, "Error : success saving unvalid article"
   end
   
 end
