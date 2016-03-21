@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+valid_one:
+  username: Admin
+  email: admin@finance.cloud
+  password_digest: $2a$10$gFUZt15LSDOtHJrZp3o0eOV5NrM7z0CzXT5kFSIXJ/d...
+
+#wrong_one:
+#  username: Ad
+#  email: lol@la
+#  password_digest: $2a$10$gFUZt15LSAOtHJrZp3o0eOV5NrM7z0CzXT5kFSIXJ/d...
