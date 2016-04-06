@@ -4,7 +4,26 @@ class ArticlesController < ApplicationController
   before_action :require_article_owner, only:[:edit, :update, :destroy]
 
   def index
-    @articles = Article.all
+    @route = "/articles"
+    @nb_objects = Article.count
+    
+    @nb_max_pages = (@nb_objects).ceil
+
+    #if no page number on route,
+    #page number is nan or
+    #page number < 1
+    #get page=1
+    if params[:page] == nil or
+       (params[:page] != nil and !params[:page].match('^[0-9]+$')) or
+       (params[:page] != nil and params[:page].to_i < 1)
+      #@articles = Article.page(1).per(@article_per_page)
+      redirect_to "#{@route}?page=1"
+    elsif params[:page].to_i > @nb_max_pages
+      redirect_to "#{@route}?page=#{@nb_max_pages}"
+      #@articles = Article.page(@nb_max_pages).per(@articles_per_page)
+    else
+      @articles = Article.page(params[:page])
+    end
   end
 
   def new

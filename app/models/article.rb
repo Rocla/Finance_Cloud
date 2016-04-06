@@ -10,4 +10,6 @@ class Article < ActiveRecord::Base
             length: {minimum: 10, maximum: 500}
 
   validates :user_id, presence: true
+
+  paginates_per 2
 end

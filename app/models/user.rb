@@ -18,4 +18,6 @@ class User < ActiveRecord::Base
 
   validates :rank,
             numericality: { less_than_or_equal_to: 999 }
+
+  paginates_per 2
 end

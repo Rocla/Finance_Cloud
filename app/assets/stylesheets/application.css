@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+.paging{
+  text-align: center;
+}
+
+.actual_page{
+  font-size: 3 em;
+  font-weight: bold;
+}

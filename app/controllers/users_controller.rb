@@ -5,7 +5,25 @@ class UsersController < ApplicationController
 
 
   def index
-    @users = User.all
+    @route = "/users"
+    @nb_objects = User.count
+    @nb_max_pages = (@nb_objects).ceil
+
+    #if no page number on route,
+    #page number is nan or
+    #page number < 1
+    #get page=1
+    if params[:page] == nil or
+       (params[:page] != nil and !params[:page].match('^[0-9]+$')) or
+       (params[:page] != nil and params[:page].to_i < 1)
+      #@articles = Article.page(1).per(@article_per_page)
+      redirect_to "#{@route}?page=1"
+    elsif params[:page].to_i > @nb_max_pages
+      redirect_to "#{@route}?page=#{@nb_max_pages}"
+      #@articles = Article.page(@nb_max_pages).per(@articles_per_page)
+    else
+      @users = User.page(params[:page]).per(@nb_obejcts_per_page)
+    end
   end
 
   def new

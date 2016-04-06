@@ -25,6 +25,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+#kaminari pagination
+#https://github.com/amatsuda/kaminari
+gem 'kaminari'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -59,4 +63,5 @@ group :production do
 
   # Use heroku 12factor
   gem 'rails_12factor'
+
 end

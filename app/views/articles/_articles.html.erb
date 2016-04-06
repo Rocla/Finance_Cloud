@@ -25,4 +25,11 @@
     </tr>
     <% end %>
   </table>
+
+  <div class="paging">
+    <%= paginate object, :window => 1 %>
+    <%= rel_next_prev_link_tags object %>
+
+  </div>
+
 </div>
