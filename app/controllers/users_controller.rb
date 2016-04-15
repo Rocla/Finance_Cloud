@@ -5,25 +5,18 @@ class UsersController < ApplicationController
 
 
   def index
-    @route = "/users"
-    @nb_objects = User.count
-    @nb_max_pages = (@nb_objects).ceil
+    @nb_per_page = 1
+    User.paginates_per @nb_per_page
+    total_pages = (User.count / @nb_per_page ).ceil
 
-    #if no page number on route,
-    #page number is nan or
-    #page number < 1
-    #get page=1
-    if params[:page] == nil or
-       (params[:page] != nil and !params[:page].match('^[0-9]+$')) or
-       (params[:page] != nil and params[:page].to_i < 1)
-      #@articles = Article.page(1).per(@article_per_page)
-      redirect_to "#{@route}?page=1"
-    elsif params[:page].to_i > @nb_max_pages
-      redirect_to "#{@route}?page=#{@nb_max_pages}"
-      #@articles = Article.page(@nb_max_pages).per(@articles_per_page)
-    else
-      @users = User.page(params[:page]).per(@nb_obejcts_per_page)
+    if params[:page].nil?
+      redirect_to :page => 1
     end
+    unless 0 < params[:page].to_i || params[:page].to_i  <= total_pages
+      redirect_to :status => 404
+    end
+    @users = User.page(params[:page])
+
   end
 
   def new

@@ -11,5 +11,8 @@ class Article < ActiveRecord::Base
 
   validates :user_id, presence: true
 
-  paginates_per 2
+  #@nb_per_page = 2
+  #paginates_per @nb_per_page
+  #total_pages = (Article.count/@nb_per_page).ceil
+
 end
