@@ -1,4 +1,5 @@
 # Cloud Finance
+## Backup of fabio's pagination
 [![Build Status](https://travis-ci.org/HE-Arc/Finance_Cloud.svg?branch=master)](https://travis-ci.org/HE-Arc/Finance_Cloud)
 
 Ruby Project by Romain Claret, Matthieu Bandelier, \& Fabio Marques
@@ -156,7 +157,7 @@ Example with User model
 **Running unit tests**
 
     $ ruby -Itest test/models/user_test.rb
-    
+
 ### General
 
   **Run all tests**
