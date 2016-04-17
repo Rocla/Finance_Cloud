@@ -9,16 +9,16 @@ class User < ActiveRecord::Base
             length: {minimum: 3, maximum: 15},
             uniqueness: {case_sensitive: false}
 
+  validates :password,
+            presence: true,
+            length: {minimum: 6, maximum: 50}
+
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
   validates :email,
             presence: true,
             length: {minimum: 3, maximum: 100},
             uniqueness: {case_sensitive: false},
             format: { with: VALID_EMAIL_REGEX }
-
-  validates :password,
-            presence: true,
-            length: {minimum: 6, maximum: 50}
 
   validates :rank,
             numericality: { less_than_or_equal_to: 999 }

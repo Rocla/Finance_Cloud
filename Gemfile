@@ -30,6 +30,9 @@ gem 'stock_quote'
 gem 'chartkick'
 gem 'groupdate'
 gem 'active_median'
+# Pagination
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 
 # Use postgreSQL as the database for Active Record
 gem 'pg'
