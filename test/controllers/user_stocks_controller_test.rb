@@ -21,22 +21,7 @@ class UserStocksControllerTest < ActionController::TestCase
       post :create, user_stock: { stock_id: @user_stock.stock_id, user_id: @user_stock.user_id }
     end
 
-    assert_redirected_to user_stock_path(assigns(:user_stock))
-  end
-
-  test "should show user_stock" do
-    get :show, id: @user_stock
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get :edit, id: @user_stock
-    assert_response :success
-  end
-
-  test "should update user_stock" do
-    patch :update, id: @user_stock, user_stock: { stock_id: @user_stock.stock_id, user_id: @user_stock.user_id }
-    assert_redirected_to user_stock_path(assigns(:user_stock))
+    assert_redirected_to portfolio_path
   end
 
   test "should destroy user_stock" do
@@ -44,6 +29,6 @@ class UserStocksControllerTest < ActionController::TestCase
       delete :destroy, id: @user_stock
     end
 
-    assert_redirected_to user_stocks_path
+    assert_redirected_to portfolio_path
   end
 end
