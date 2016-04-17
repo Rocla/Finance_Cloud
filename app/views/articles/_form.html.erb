@@ -1,15 +1,30 @@
 <%= render 'shared/errors', object: @article %>
 
-<%= form_for @article do |a| %>
-  <p>
-    <%= a.label :title %><br/>
-    <%= a.text_field :title, placeholder: "Choose a title", autofocus: true %>
-  </p>
-  <p>
-    <%= a.label :content %><br/>
-    <%= a.text_area :content, placeholder: "Create your article here" %>
-  </p>
-  <p>
-    <%= a.submit(@article.new_record? ? "Create new article" : "Update this article")  %>
-  </p>
-<% end %>
+<div class='row'>
+  <div class='col-xs-12'>
+    <%= form_for(@article, :html => {class: "form-horizontal", role: "form"}) do |a| %>
+      <div class="form-group">
+        <div class="col-sm-2 control-label">
+          <%= a.label :title %>
+        </div>
+        <div class="col-sm-8">
+          <%= a.text_field :title, placeholder: "Choose a title", autofocus: true, class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-2 control-label">
+          <%= a.label :content %>
+        </div>
+        <div class="col-sm-8">
+          <%= a.text_area :content, placeholder: "Write your article here", class: "form-control", rows: 15 %>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <%= a.submit(@article.new_record? ? "Create new article" : "Update this article", class: 'btn btn-primary btn-lg') %>
+          <%= link_to "Cancel", articles_path, class: 'btn btn-default btn-lg' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

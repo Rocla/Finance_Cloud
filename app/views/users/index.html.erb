@@ -1,6 +1,8 @@
 <div class="panel panel-primary">
   <div class="panel-heading">List of users</div>
-
+  <div align="center">
+    <%= will_paginate %>
+  </div>
   <div class="panel-body">
     <table style="width:100%">
       <h2>
@@ -32,4 +34,7 @@
       <%= paginate @users, :window => 1 %>
       <%= rel_next_prev_link_tags @users %>
     </div>
+  </div>
+  <div align="center">
+    <%= will_paginate %>
   </div>

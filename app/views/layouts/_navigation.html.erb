@@ -32,6 +32,9 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Finance<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><%= link_to "Search for stocks", stocks_path %></li>
+            <% if user? %>
+            <li><%= link_to "My Portfolio", portfolio_path %></li>
+            <% end %>
           </ul>
         </li>
 

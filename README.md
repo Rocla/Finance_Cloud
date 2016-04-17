@@ -22,7 +22,11 @@ What's not here must be on the wiki ;)
 ## Used particular gems
 
 ### Global
+- 'pg'
 - 'bootstrap-sass', '~> 3.3.6'
+- 'stock_quote' # https://rubygems.org/gems/stock_quote
+- 'chartkick' # https://github.com/ankane/chartkick
+- 'active_median'
 
 ### Development
 - 'byebug' # **debugger** and ctrl-d to release
@@ -32,7 +36,6 @@ What's not here must be on the wiki ;)
 - 'bcrypt', '~> 3.1.7'
 
 ### Production
-- 'pg'
 - 'rails_12factor'
 
 ## Usage
@@ -41,6 +44,7 @@ What's not here must be on the wiki ;)
 **Reminder**
 
   - Local address: http://192.168.99.100:3000/
+  - School server: ssh -p 2008 username@srvz-webapp.he-arc.ch
 
 **Do once:**
 
@@ -156,7 +160,7 @@ Example with User model
 **Running unit tests**
 
     $ ruby -Itest test/models/user_test.rb
-    
+
 ### General
 
   **Run all tests**

@@ -1,0 +1,14 @@
+<%= javascript_include_tag "https://www.google.com/jsapi", "chartkick" %>
+<div id="stock-search-result" class="panel-body">
+  <div class="panel-heading">
+    <% if @stock %>
+      <div>
+        Ticker: <%= @stock.ticker %><br/>
+        Name: <%= @stock.name %><br/>
+        Last value: <%= @stock.last_value %><br/>
+        Prediction closing: <%= rand(0...500) %>
+      </div>
+    <% end %>
+    <%= line_chart Article.group_by_day(:created_at).count %>
+  </div>
+</div>

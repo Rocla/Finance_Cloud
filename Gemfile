@@ -6,6 +6,7 @@ gem 'rails', '4.2.5.1'
 # Use SCSS for stylesheets
 # https://github.com/twbs/bootstrap-sass
 gem 'bootstrap-sass', '~> 3.3.6'
+gem "font-awesome-rails"
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -22,10 +23,20 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
-# Use ActiveModel has_secure_password
+# use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 # Use stock_quote for fetching financial quotes https://rubygems.org/gems/stock_quote
 gem 'stock_quote'
+# Use of Google Charts or Highcharts https://github.com/ankane/chartkick
+gem 'chartkick'
+gem 'groupdate'
+gem 'active_median'
+# Pagination
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
+
+# Use postgreSQL as the database for Active Record
+gem 'pg'
 
 
 #kaminari pagination
@@ -61,9 +72,6 @@ group :staging do
 end
 
 group :production do
-  # Use postgreSQL as the database for Active Record
-  gem 'pg'
-
   # Use heroku 12factor
   gem 'rails_12factor'
 
