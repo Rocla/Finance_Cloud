@@ -21,3 +21,72 @@
   font-size: 3 em;
   font-weight: bold;
 }
+
+.navbar{
+  background-color: black;
+  color: white;
+}
+
+.dropdown-menu{
+  background-color: rgb(80, 80, 80);
+  color: white;
+}
+
+.dropdown-menu>li>a{
+  color: white;
+}
+
+.dropdown-menu>li>a:hover{
+  color: black;
+}
+
+body, .container, .panel > .panel-primary, .panel > .panel-heading, .panel > .panel-body, .thumbnail{
+  background-color: black;
+
+  color:white;
+}
+
+.panel > .panel-heading{
+  font-size: 2em;
+}
+
+.panel,.panel > .panel-heading, .table-responsive, .thumbnail{
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+div{
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.btn, .btn:focus{
+  border: none;
+  background-color: rgb(80,80,80);
+  color:white;
+}
+
+.btn:hover, .btn:active:focus {
+    background-color: white;
+    color:black;
+}
+
+.btn:active{
+  background-color: rgb(80,80,80);
+  color:white;
+  transform: translateY(4px);
+}
+
+h1, h2, h3, p, div, a{
+  color:white;
+}
+
+a:visited{
+  color: white;
+}
+
+.footer{
+  text-align: center;
+}

@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
 
 
   def index
-    @nb_per_page = 1
+    @nb_per_page = 3
     Article.paginates_per @nb_per_page
     total_pages = (Article.count / @nb_per_page ).ceil
 

@@ -2,31 +2,33 @@
   <div class="panel-heading">List of users</div>
 
   <div class="panel-body">
-    <table style="width:100%">
-      <h2>
+    <div class="table-responsive">
+      <table style="width:100%">
+        <h2>
+          <tr>
+            <th>Avatar</th>
+            <th>Username</th>
+            <th>Articles</th>
+            <% if admin? %>
+              <th colspan="2">Admin Actions</th>
+            <% end %>
+          </tr>
+        </h2>
+
+        <%paginate @users%>
+        <% @users.each do |u| %>
         <tr>
-          <th>Avatar</th>
-          <th>Username</th>
-          <th>Articles</th>
+          <td><%= link_to get_gravatar(u, size:25), user_path(u) %></td>
+          <td><%= link_to u.username, user_path(u)  %></td>
+          <td><%= u.articles.count  %></td>
           <% if admin? %>
-            <th colspan="2">Admin Actions</th>
+            <td><%= link_to 'Edit', edit_user_path(u) %></td>
+            <td><%= link_to 'Delete', user_path(u), method: :delete, data: {confirm: "Are you sure to delete this user?"} %></td>
           <% end %>
         </tr>
-      </h2>
-
-      <%paginate @users%>
-      <% @users.each do |u| %>
-      <tr>
-        <td><%= link_to get_gravatar(u, size:25), user_path(u) %></td>
-        <td><%= link_to u.username, user_path(u)  %></td>
-        <td><%= u.articles.count  %></td>
-        <% if admin? %>
-          <td><%= link_to 'Edit', edit_user_path(u) %></td>
-          <td><%= link_to 'Delete', user_path(u), method: :delete, data: {confirm: "Are you sure to delete this user?"} %></td>
         <% end %>
-      </tr>
-      <% end %>
-    </table>
+      </table>
+    </div>
 
     <div class="paging">
       <%= paginate @users, :window => 1 %>
