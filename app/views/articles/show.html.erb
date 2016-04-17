@@ -1,26 +1,81 @@
 <div class="panel panel-primary">
-  <div class="panel-heading">Display of the article with id <%= @article.id %></div>
+  <div class="panel-heading">
+    <div class="row">
+      <div class="col-md-1">
+        <%= link_to get_gravatar(@article.user, size:80), user_path(@article.user) %>
+      </div>
+      <div class="col-md-8"><h1><%= @article.title %></h1></div>
+    </div>
+  </div>
 
   <div class="panel-body">
-    <% if current_user == @article.user || moderator? %>
-      <%= link_to "Edit this article", edit_article_path(@article) %><br>
-      <br/>
-    <% end %>
-    <p>
-      <%= link_to get_gravatar(@article.user, size:100), user_path(@article.user) %><br/>
-      Author: <%= link_to @article.user.username, user_path(@article.user) %>
-    </p>
-    <p>
-      Created: <%= time_ago_in_words(@article.created_at) %> ago
-    </p>
-    <p>
-      Updated: <%= time_ago_in_words(@article.updated_at) %> ago
-    </p>
-    <p>
-      Title: <%= @article.title %>
-    </p>
-    <p>
-      Content: <%= @article.content %>
-    </p>
+    <div>
+      <% if current_user == @article.user || moderator? %>
+        <%= link_to "Edit", edit_article_path(@article), class: "btn btn-xs btn-primary" %>
+        <%= link_to "Delete", article_path(@article), method: :delete,
+                                                      data: { confirm: "Are you sure to delete this article?"},
+                                                      class: "btn btn-xs btn-danger" %>
+      <% end %>
+      <hr>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <%= image_tag "/assets/graphs/graph-fake.png" %>
+      </div>
+      <div class="col-md-3">
+        <table style="width:100%">
+          <tr><td>Start date</td><td>01-01-2016</td></tr>
+          <tr><td>End date</td><td>01-05-2016</td></tr>
+          <tr><td>Prediction</td><td>95.63</td></tr>
+          <tr><td>Today result</td><td>0.56 (-0.57%)</td></tr>
+        </table>
+      </div>
+      <div class="col-md-4">
+        <table style="width:100%">
+          <tr><td>Today's community prediction</td><td>96.54 <font color="red">0.56 (-0.57%)</font></td></tr>
+        </table>
+      </div>
+    </div>
+    <hr>
+    <%= simple_format(@article.content) %>
+    <hr>
+    <div class="row">
+      <div class="col-md-8">
+        <h4>Related Quotes</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <div class="caption">
+            <h3>Article Name</h3>
+            <p align="center"><a href="#" class="btn btn-primary" role="button">Go to</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        <h4>Related Posts</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <div class="caption">
+            <h3>Article Name</h3>
+            <p align="center"><a href="#" class="btn btn-primary" role="button">Go to</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        <% if @article.user.articles %>
+          <h4>Read more articles from <%= link_to @article.user.username, user_path(@article.user) %></h4>
+        <% end %>
+      </div>
+    </div>
+    <p align="right">Updated: <%= time_ago_in_words(@article.updated_at) %> ago</p>
   </div>
 </div>

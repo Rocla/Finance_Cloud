@@ -16,7 +16,6 @@ class ArticlesController < ApplicationController
     @article.user = current_user
     if @article.save
       flash[:success] = "Article was created"
-      #flash[:notice] = "render plain: params[:article].inspect"
       redirect_to article_path(@article)
     else
       render :new
@@ -40,7 +39,7 @@ class ArticlesController < ApplicationController
 
   def destroy
     if @article.destroy
-      flash[:success] = "Article was deleted"
+      flash[:info] = "Article was deleted"
     end
     redirect_to articles_path
   end
@@ -54,7 +53,7 @@ class ArticlesController < ApplicationController
     end
     def require_article_owner
       if current_user != @article.user && !moderator?
-        flash[:error] = "You are not allowed to do that"
+        flash[:danger] = "You are not allowed to do that"
         redirect_to article_path(@article)
       end
     end

@@ -3,7 +3,6 @@ class UsersController < ApplicationController
   before_action :require_user, except: [:index, :new, :create, :show]
   before_action :require_same_user, only:[:edit, :update, :destroy]
 
-
   def index
     @users = User.paginate(page: params[:page])
   end
@@ -43,11 +42,11 @@ class UsersController < ApplicationController
     if @user.destroy
       Article.where(user: @user).update_all(user_id: 1)
       if current_user == @user
-        flash[:success] = "We are sorry that you leave, your user profile is gone now :("
+        flash[:info] = "We are sorry that you leave, your user profile is gone now :("
         session[:user_id] = nil
         redirect_to root_path
       else
-        flash[:success] = "This user is gone"
+        flash[:info] = "This user is gone"
         redirect_to users_path
       end
     end
@@ -62,7 +61,7 @@ class UsersController < ApplicationController
     end
     def require_same_user
       if current_user != @user && !admin?
-        flash[:error] = "You are not allowed to do that"
+        flash[:danger] = "You are not allowed to do that"
         redirect_to user_path(@user.id)
       end
     end

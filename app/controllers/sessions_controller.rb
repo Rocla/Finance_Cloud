@@ -12,16 +12,16 @@ class SessionsController < ApplicationController
           redirect_to user_path(user)
         else
           # TODO give email has argument
-          flash[:error] = "Your password is incorrect"
+          flash[:danger] = "Your password is incorrect"
           render 'new'
         end
       else
         # TODO give email has argument
-        flash[:error] = "Non-existing email address"
+        flash[:danger] = "Non-existing email address"
         render 'new'
       end
     else
-      flash[:error] = "Wrong email format"
+      flash[:danger] = "Wrong email format"
       # TODO give email has argument
       render 'new'
     end
@@ -30,7 +30,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    flash[:success] = "You have now logged out"
+    flash[:info] = "You have now logged out"
     session[:user_id] = nil
     redirect_to root_path
   end
