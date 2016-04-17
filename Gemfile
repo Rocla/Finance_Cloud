@@ -22,10 +22,17 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
-# Use ActiveModel has_secure_password
+# use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 # Use stock_quote for fetching financial quotes https://rubygems.org/gems/stock_quote
 gem 'stock_quote'
+# Use of Google Charts or Highcharts https://github.com/ankane/chartkick
+gem 'chartkick'
+gem 'groupdate'
+gem 'active_median'
+
+# Use postgreSQL as the database for Active Record
+gem 'pg'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -58,9 +65,6 @@ group :staging do
 end
 
 group :production do
-  # Use postgreSQL as the database for Active Record
-  gem 'pg'
-
   # Use heroku 12factor
   gem 'rails_12factor'
 end
