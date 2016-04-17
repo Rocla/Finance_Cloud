@@ -1,0 +1,26 @@
+<div id="stock-search">
+  <h3>Search for Stocks</h3>
+  <%= form_tag stocks_search_path, id: 'stock-search-form', remote: true, method: :get do %>
+  <div class="col-md-12 form-group row no-padding text-center">
+    <div class="col-md-10">
+      <%= text_field_tag :ticker, params[:ticker], autofocus: true, placeholder: "Search by ticker",
+                                  class: 'form-control search-box input-lg' %>
+    </div>
+    <div class="col-md-2">
+      <%= button_tag(type: :submit, class: "btn btn-lg btn-success") do %>
+        <i class="fa fa-search"></i> Search for a stock
+      <% end %>
+    </div>
+  </div>
+  <% end %>
+  <%= render 'shared/spinner' %>
+  <% if @stock %>
+    <div id="stock-search-results" class="well quote-search-results-block">
+      <strong>Ticker:</strong> <%= @stock.ticker %>
+      <strong>Name:</strong> <%= @stock.name %>
+      <strong>Last value:</strong> <%= @stock.last_value %>
+      <strong>Prediction closing:</strong> <%= rand(0...500) %>
+    </div>
+  <% end %>
+  <div id="stock-search-error"></div>
+</div>

@@ -13,7 +13,6 @@ class ApplicationController < ActionController::Base
   # set will_paginate per_page globally
   WillPaginate.per_page = 10
 
-
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end

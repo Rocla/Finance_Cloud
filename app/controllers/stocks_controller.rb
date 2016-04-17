@@ -10,7 +10,7 @@ class StocksController < ApplicationController
       @stock ||= Stock.retrieve_stock_by_ticker(params[:ticker])
     end
     if @stock
-      render partial: 'search_result'
+      render partial: 'search'
     else
       render status: :not_found, nothing: true
     end
