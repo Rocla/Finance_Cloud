@@ -11,10 +11,12 @@
   <div class="panel-body">
     <div>
       <% if current_user == @article.user || moderator? %>
+      <div>
         <%= link_to "Edit", edit_article_path(@article), class: "btn btn-xs btn-primary" %>
         <%= link_to "Delete", article_path(@article), method: :delete,
                                                       data: { confirm: "Are you sure to delete this article?"},
                                                       class: "btn btn-xs btn-danger" %>
+      </div>
       <% end %>
       <hr>
     </div>
@@ -49,7 +51,7 @@
         <div class="thumbnail">
           <div class="caption">
             <h3>Article Name</h3>
-            <p align="center"><a href="#" class="btn btn-primary" role="button">Go to</a></p>
+            <p align="center"><a href="#" class="btn btn-primary" role="button" style="width:100%">Go to</a></p>
           </div>
         </div>
       </div>
@@ -64,7 +66,7 @@
         <div class="thumbnail">
           <div class="caption">
             <h3>Article Name</h3>
-            <p align="center"><a href="#" class="btn btn-primary" role="button">Go to</a></p>
+            <p align="center"><a href="#" class="btn btn-primary" role="button" style="width:100%">Go to</a></p>
           </div>
         </div>
       </div>
