@@ -26,18 +26,14 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 # Use stock_quote for fetching financial quotes https://rubygems.org/gems/stock_quote
 gem 'stock_quote'
-<<<<<<< HEAD
+
 
 #kaminari pagination
 #https://github.com/amatsuda/kaminari
 gem 'kaminari'
-=======
->>>>>>> 86791da8a41cc0f14a5e97fc4f3bdfa96b429216
 
 # Use Unicorn as the app server
 # gem 'unicorn'
-
-
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
