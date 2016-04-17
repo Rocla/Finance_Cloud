@@ -17,6 +17,15 @@ var init_stock = function()
     $('#stock-search-results').replaceWith(' ');
     $('#stock-search-error').replaceWith('Stock not found');
   });
+
+  $('#stock-adding').on('ajax:before', function(event, data)
+  {
+    show_spinner();
+  });
+  $('#stock-adding').on('ajax:after', function(event, data)
+  {
+    hide_spinner();
+  });
 }
 
 $(document).ready(init_stock);

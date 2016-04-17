@@ -16,10 +16,24 @@
   <%= render 'shared/spinner' %>
   <% if @stock %>
     <div id="stock-search-results" class="well quote-search-results-block">
-      <strong>Ticker:</strong> <%= @stock.ticker %>
-      <strong>Name:</strong> <%= @stock.name %>
-      <strong>Last value:</strong> <%= @stock.last_value %>
-      <strong>Prediction closing:</strong> <%= rand(0...500) %>
+      <strong>Name:</strong> <%= @stock.name %></br>
+      <strong>Ticker:</strong> <%= @stock.ticker %></br>
+      <strong>Last value:</strong> <%= @stock.last_value %></br>
+      <strong>Prediction closing:</strong> <%= rand(0...500) %></br>
+      <% if current_user.add_stock?(@stock.ticker) %>
+        <%= link_to "Add this stock to my portfolio", user_stocks_path(user: current_user, stock_ticker: @stock.ticker,
+                stock_id: @stock.id ? @stock.id : ''), class: 'btn btn-success btn-xs', method: :post, :onclick => 'show_spinner()' %>
+      <% else %>
+        <span class="label label-default">
+          Sorry, this stock cannot be added because you have already
+          <% if !current_user.at_stock_limit? %>
+          reached your stock limit for your portfolio.
+          <% end %>
+          <% if current_user.already_added_stock?(@stock.ticker) %>
+          have this stock in your portfolio.
+          <% end %>
+        </span>
+      <% end %>
     </div>
   <% end %>
   <div id="stock-search-error"></div>

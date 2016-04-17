@@ -1,4 +1,7 @@
 class Stock < ActiveRecord::Base
+  has_many :user_stocks
+  has_many :users, through: :user_stocks
+
   def self.retrieve_stock_by_ticker(ticker)
     retrieved_stock = StockQuote::Stock.quote(ticker)
     return nil unless retrieved_stock.name
@@ -16,5 +19,9 @@ class Stock < ActiveRecord::Base
     return "#{opening_price} (Opening)" if opening_price
 
     "Unable to fetch latest price"
+  end
+
+  def self.search_stock_by_ticker(ticker)
+    where(ticker: ticker).first
   end
 end

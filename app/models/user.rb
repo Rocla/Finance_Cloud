@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   has_many :articles
+  has_many :user_stocks
+  has_many :stocks, through: :user_stocks
 
   has_secure_password
   before_save {self.email = email.downcase}
@@ -22,4 +24,18 @@ class User < ActiveRecord::Base
 
   validates :rank,
             numericality: { less_than_or_equal_to: 999 }
+
+  def add_stock?(ticker)
+    at_stock_limit? && !already_added_stock?(ticker)
+  end
+
+  def at_stock_limit?
+    (user_stocks.count < 50)
+  end
+
+  def already_added_stock?(ticker)
+    stock = Stock.retrieve_stock_by_ticker(ticker)
+    return false unless stock
+    user_stocks.where(stock_id: stock.id).exists?
+  end
 end

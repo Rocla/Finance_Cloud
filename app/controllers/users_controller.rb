@@ -36,6 +36,7 @@ class UsersController < ApplicationController
 
   def show
     @user_articles = @user.articles.paginate(page: params[:page])
+    @user_stocks = @user.stocks
   end
 
   def destroy
@@ -50,6 +51,11 @@ class UsersController < ApplicationController
         redirect_to users_path
       end
     end
+  end
+
+  def portfolio
+    @user_stocks = current_user.stocks
+    @user = current_user
   end
 
   private
