@@ -16,7 +16,6 @@
         </tr>
       </h2>
 
-      <%paginate @users%>
       <% @users.each do |u| %>
       <tr>
         <td><%= link_to get_gravatar(u, size:25), user_path(u) %></td>
@@ -29,11 +28,6 @@
       </tr>
       <% end %>
     </table>
-
-    <div class="paging">
-      <%= paginate @users, :window => 1 %>
-      <%= rel_next_prev_link_tags @users %>
-    </div>
   </div>
   <div align="center">
     <%= will_paginate %>

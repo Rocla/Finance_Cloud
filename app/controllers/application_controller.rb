@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   ADMIN_RANK = 2
 
   # set will_paginate per_page globally
-  WillPaginate.per_page = 10
+  WillPaginate.per_page = 9
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]

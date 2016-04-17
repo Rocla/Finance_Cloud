@@ -3,20 +3,8 @@ class ArticlesController < ApplicationController
   before_action :require_user, except: [:index, :show]
   before_action :require_article_owner, only:[:edit, :update, :destroy]
 
-
   def index
-    @nb_per_page = 1
-    Article.paginates_per @nb_per_page
-    total_pages = (Article.count / @nb_per_page ).ceil
-
-    if params[:page].nil?
-      redirect_to :page => 1
-    end
-    unless 0 < params[:page].to_i || params[:page].to_i <= total_pages
-      redirect_to :status => 404
-    end
-    @articles = Article.page(params[:page])
-
+    @articles = Article.paginate(page: params[:page])
   end
 
   def new
@@ -28,7 +16,6 @@ class ArticlesController < ApplicationController
     @article.user = current_user
     if @article.save
       flash[:success] = "Article was created"
-      #flash[:notice] = "render plain: params[:article].inspect"
       redirect_to article_path(@article)
     else
       render :new
@@ -52,7 +39,7 @@ class ArticlesController < ApplicationController
 
   def destroy
     if @article.destroy
-      flash[:success] = "Article was deleted"
+      flash[:info] = "Article was deleted"
     end
     redirect_to articles_path
   end
@@ -66,7 +53,7 @@ class ArticlesController < ApplicationController
     end
     def require_article_owner
       if current_user != @article.user && !moderator?
-        flash[:error] = "You are not allowed to do that"
+        flash[:danger] = "You are not allowed to do that"
         redirect_to article_path(@article)
       end
     end

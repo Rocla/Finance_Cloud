@@ -38,11 +38,6 @@ gem 'bootstrap-will_paginate'
 # Use postgreSQL as the database for Active Record
 gem 'pg'
 
-
-#kaminari pagination
-#https://github.com/amatsuda/kaminari
-gem 'kaminari'
-
 # Use Unicorn as the app server
 # gem 'unicorn'
 

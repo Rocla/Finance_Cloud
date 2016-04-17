@@ -3,20 +3,8 @@ class UsersController < ApplicationController
   before_action :require_user, except: [:index, :new, :create, :show]
   before_action :require_same_user, only:[:edit, :update, :destroy]
 
-
   def index
-    @nb_per_page = 1
-    User.paginates_per @nb_per_page
-    total_pages = (User.count / @nb_per_page ).ceil
-
-    if params[:page].nil?
-      redirect_to :page => 1
-    end
-    unless 0 < params[:page].to_i || params[:page].to_i  <= total_pages
-      redirect_to :status => 404
-    end
-    @users = User.page(params[:page])
-
+    @users = User.paginate(page: params[:page])
   end
 
   def new
@@ -47,20 +35,27 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user_articles = @user.articles.paginate(page: params[:page])
+    @user_stocks = @user.stocks
   end
 
   def destroy
     if @user.destroy
       Article.where(user: @user).update_all(user_id: 1)
       if current_user == @user
-        flash[:success] = "We are sorry that you leave, your user profile is gone now :("
+        flash[:info] = "We are sorry that you leave, your user profile is gone now :("
         session[:user_id] = nil
         redirect_to root_path
       else
-        flash[:success] = "This user is gone"
+        flash[:info] = "This user is gone"
         redirect_to users_path
       end
     end
+  end
+
+  def portfolio
+    @user_stocks = current_user.stocks
+    @user = current_user
   end
 
   private
@@ -72,7 +67,7 @@ class UsersController < ApplicationController
     end
     def require_same_user
       if current_user != @user && !admin?
-        flash[:error] = "You are not allowed to do that"
+        flash[:danger] = "You are not allowed to do that"
         redirect_to user_path(@user.id)
       end
     end
