@@ -16,6 +16,10 @@ class User < ActiveRecord::Base
             uniqueness: {case_sensitive: false},
             format: { with: VALID_EMAIL_REGEX }
 
+  validates :password,
+            presence: true,
+            length: {minimum: 6, maximum: 50}
+
   validates :rank,
             numericality: { less_than_or_equal_to: 999 }
 
