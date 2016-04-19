@@ -38,6 +38,7 @@ staging:
 production:
   # this is the heroku random settings
   <<: *default
-  adapter: sqlite3
-  timeout: 5000
-  database: db/production.sqlite3
+  database: <%= ENV['POSTGRES_USERNAME'] %>
+  username: <%= ENV['POSTGRES_USERNAME'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
+  schema_search_path: production

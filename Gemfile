@@ -35,15 +35,14 @@ gem 'active_median'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 
-# Use postgreSQL as the database for Active Record
-gem 'pg'
-
-# Use Unicorn as the app server
-# gem 'unicorn'
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+end
+
+group :test, :production, :staging do
+  # Use postgreSQL as the database for Active Record
+  gem 'pg'
 end
 
 group :development do
@@ -60,8 +59,7 @@ group :development do
   gem 'spring'
 end
 
-group :staging do
-
+group :staging, :production do
   # Use Puma as the app server
   gem 'puma'
 end
@@ -69,5 +67,4 @@ end
 group :production do
   # Use heroku 12factor
   gem 'rails_12factor'
-
 end
